@@ -21,3 +21,4 @@ services:
         max-size: "200k"
     volumes:
       - ./mysite/database:/app/database
+      - ./mysite/static:/app/static

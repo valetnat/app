@@ -96,6 +96,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'django_filters',
     'drf_spectacular',
+    # 'whitenoise.runserver_nostatic',
 
     'shopapp.apps.ShopappConfig',
     'myauth.apps.MyauthConfig',
@@ -106,6 +107,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     # 'django.middleware.cache.UpdateCacheMiddleware',  # Should to be first
     'django.middleware.security.SecurityMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -162,7 +164,7 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        "LOCATION": 'var/tmp/django_cache',
+        "LOCATION": '/var/tmp/django_cache',
     },
 }
 
@@ -203,7 +205,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
+# STATIC_ROOT.mkdir(exist_ok=True)
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+# ]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'uploads'
