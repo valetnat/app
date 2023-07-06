@@ -158,7 +158,6 @@ DATABASES = {
 }
 
 
-
 # Setting of CACHE
 CACHES = {
     'default': {
